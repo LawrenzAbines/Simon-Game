@@ -4,7 +4,16 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-//make sure the game start once the user press any key.
+//make sure the game start once the user press any key or touched the screen.
+
+$(document).on("touchstart", function () {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
+
 $(document).keypress(function () {
   if (!started) {
     $("#level-title").text("Level " + level);
